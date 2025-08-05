@@ -1,0 +1,19 @@
+# Windows2Go - Python Dependencies
+# Version: 3.0.0
+# Platform: Windows 10/11 Pro/Enterprise
+# Python: 3.7+
+
+# GUI Framework - Modern, customizable tkinter-based UI
+customtkinter>=5.2.0
+
+# System and Process Utilities - For disk drive detection and system monitoring
+psutil>=5.9.0
+
+# Image Processing Library - For handling icons and UI graphics
+Pillow>=9.0.0
+
+# Windows API Access - For low-level Windows system operations
+pywin32>=305
+
+# Optional: Enhanced Windows COM support (automatically installed with pywin32)
+# pypiwin32>=223
