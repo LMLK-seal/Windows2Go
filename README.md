@@ -83,11 +83,6 @@ This tool directly manipulates disk drives and can cause **PERMANENT DATA LOSS**
 
 ### 🛠️ **Required Dependencies**
 
-#### **7-Zip Command Line Tools** (Required)
-- Download 7-Zip from [official website](https://www.7-zip.org/)
-- Ensure `7z.exe` and `7z.dll` are in the same directory as the application
-- Version 19.00 or later recommended
-
 ##### 📦 **How to Extract the 7z.exe Files:**
 1. **Download the Stable Installer (23.01 x64):** Go to the [7-Zip Download Page](https://www.7-zip.org/) and download the very first link: **"Download .exe 64-bit Windows x64"**
    - Direct link: [`7z2301-x64.exe`](https://www.7-zip.org/a/7z2301-x64.exe)
