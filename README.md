@@ -127,7 +127,7 @@ git clone https://github.com/LMLK-seal/windows2Go.git
 cd windows-togo-creator
 
 # Install Python dependencies
-pip install -r requirements.txt
+pip install customtkinter psutil pillow pywin32
 
 # Download 7-Zip command line tools
 # Place 7z.exe and 7z.dll in the project directory
@@ -308,13 +308,6 @@ We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.
 - Check existing issues first
 - Provide clear use case descriptions
 - Consider backward compatibility
-
-### 🔧 **Development Setup**
-```bash
-git clone https://github.com/LMLK-seal/windows2Go.git
-cd windows-togo-creator
-pip install -r requirements.txt
-```
 
 ---
 
