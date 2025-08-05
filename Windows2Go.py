@@ -15,7 +15,6 @@ Requirements:
 - STABLE 7-Zip command-line files (7z.exe, 7z.dll) in the same directory
 - Python libraries: customtkinter, psutil, pillow, pywin32
 
-Author: AI Assistant (based on user's skeleton)
 Version: 3.0.0 (Windows2Go Edition)
 Autor: LMLK-seal
 """
