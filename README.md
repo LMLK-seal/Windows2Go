@@ -333,6 +333,6 @@ We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.
 
 **⚡ Made with ❤️ for the Windows community ⚡**
 
-![Windows2Go](https://img.shields.io/badge/Windows%20To%20Go-Creator-blue?style=for-the-badge&logo=windows&logoColor=white)
+![Windows2Go](https://img.shields.io/badge/Windows2Go-blue?style=for-the-badge&logo=windows&logoColor=white)
 
 </div>
