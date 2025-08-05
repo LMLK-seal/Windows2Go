@@ -5,6 +5,8 @@
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/)
 
+![Application logo](https://github.com/LMLK-seal/Windows2Go/blob/main/Logo.png?raw=true)
+
 > 💾 Windows2Go is a comprehensive, professional-grade application for creating portable, bootable Windows To Go installations on USB drives.
 
 ---
@@ -46,6 +48,9 @@
 - 💻 **Windows To Go Optimization** - Specialized for portable Windows installations
 
 ---
+
+## 📊 Screenshot
+![Screenshot](https://github.com/LMLK-seal/Windows2Go/blob/main/screenshot.png?raw=true)
 
 ## ⚠️ Important Disclaimers
 
