@@ -123,7 +123,7 @@ pip install customtkinter psutil pillow pywin32
 ### 🐍 **Method 2: From Source**
 ```bash
 # Clone the repository
-git clone https://github.com/LMLK+seal/windows2Go.git
+git clone https://github.com/LMLK-seal/windows2Go.git
 cd windows-togo-creator
 
 # Install Python dependencies
