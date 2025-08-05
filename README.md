@@ -8,9 +8,7 @@
 ![Application logo](https://github.com/LMLK-seal/Windows2Go/blob/main/Logo.png?raw=true)
 
 > 💾 Windows2Go is a comprehensive, professional-grade application for creating portable, bootable Windows To Go installations on USB drives.
-
-## > This was successfully tested on a SanDisk Cruzer Blade 16GB drive using Windows 11. Performance can be better with a higher-spec USB drive and ports that support USB 3.1 or 3.2.
-
+- This was successfully tested on a SanDisk Cruzer Blade 16GB drive using Windows 11. Performance can be better with a higher-spec USB drive and ports that support USB 3.1 or 3.2.
 ---
 
 ## 📋 Table of Contents
