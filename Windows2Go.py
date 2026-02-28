@@ -225,29 +225,45 @@ class WindowsToGoCreator:
     def get_usb_drives(self) -> List[Dict]:
         usb_drives = []
         try:
-            command = ['wmic', 'diskdrive', 'get', 'DeviceID,Model,Size,Index,InterfaceType', '/format:csv']
-            proc = subprocess.run(command, capture_output=True, text=True, check=True, creationflags=subprocess.CREATE_NO_WINDOW)
-            lines = proc.stdout.strip().replace('\r', '').split('\n')
-            if len(lines) < 2: return []
-            header = [h.strip() for h in lines[0].split(',')]
-            idx = {h: i for i, h in enumerate(header)}
-            for line in lines[1:]:
-                parts = [p.strip() for p in line.split(',')]
-                if len(parts) < len(header): continue
-                if "USB" in parts[idx["InterfaceType"]]:
-                    try:
-                        index = int(parts[idx["Index"]])
-                        size_gb = int(parts[idx["Size"]]) / (1024**3)
-                        if size_gb < 1: continue
-                        mountpoint = f"Disk {index}"
-                        for part in psutil.disk_partitions(all=True):
-                            if f'PhysicalDrive{index}' in part.device:
-                                mountpoint = part.mountpoint; break
-                        usb_drives.append({
-                            'device': mountpoint, 'index': index, 'model': parts[idx["Model"]],
-                            'total_gb': size_gb, 'display_name': f"{mountpoint} (Disk {index}) - {parts[idx['Model']]} ({size_gb:.1f} GB)"
-                        })
-                    except (ValueError, IndexError): continue
+            # Use PowerShell instead of wmic (wmic is deprecated/removed in Windows 11 24H2+)
+            ps_script = (
+                "Get-PhysicalDisk | Where-Object { $_.BusType -eq 'USB' } | "
+                "Select-Object DeviceId, FriendlyName, Size | "
+                "ConvertTo-Json -Compress"
+            )
+            command = ['powershell', '-NoProfile', '-NonInteractive', '-Command', ps_script]
+            proc = subprocess.run(command, capture_output=True, text=True, check=True,
+                                  creationflags=subprocess.CREATE_NO_WINDOW)
+            output = proc.stdout.strip()
+            if not output:
+                return []
+
+            import json as _json
+            raw = _json.loads(output)
+            # PowerShell returns a single object (dict) if only one disk, or a list
+            if isinstance(raw, dict):
+                raw = [raw]
+
+            for disk in raw:
+                try:
+                    index = int(disk["DeviceId"])
+                    size_bytes = int(disk["Size"])
+                    size_gb = size_bytes / (1024 ** 3)
+                    if size_gb < 1:
+                        continue
+                    model = disk.get("FriendlyName", "Unknown USB Drive")
+                    mountpoint = f"Disk {index}"
+                    for part in psutil.disk_partitions(all=True):
+                        if f'PhysicalDrive{index}' in part.device:
+                            mountpoint = part.mountpoint
+                            break
+                    usb_drives.append({
+                        'device': mountpoint, 'index': index, 'model': model,
+                        'total_gb': size_gb,
+                        'display_name': f"{mountpoint} (Disk {index}) - {model} ({size_gb:.1f} GB)"
+                    })
+                except (ValueError, KeyError):
+                    continue
         except Exception as e:
             self.log_message(f"Error detecting USB drives: {str(e)}", "error")
         return usb_drives
